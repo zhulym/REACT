@@ -1,0 +1,97 @@
+html, body {
+  background-color: #282C34;
+  position: relative;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: #F1E3C9;
+}
+
+.header__menu,
+.header__menu li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.header__menu {
+  display: flex;
+  width: 1200px;
+  margin: 20px auto;
+}
+
+.header__menu li {
+ margin: 0 30px 0 30px;
+ width: 15%;
+ background-color: #61DAFB;
+ padding: 7px;
+ border-radius: 5px;
+}
+
+.header__menu li a {
+  text-decoration: none;
+  color: rgb(27, 26, 39);
+  width: 100%;
+}
+
+.header__menu li:hover {
+  background-color: rgb(85, 116, 151);
+  text-decoration: underline;
+}
+
+.greeting__content-button,
+.modal__submit {
+  padding: 7px;
+  cursor: pointer;
+}
+
+#greeting__modal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 200px;
+  background-color: #4e5768;
+  border-radius: 5px;
+  
+}
+
+.hide__modal {
+  display: none;
+}
+
+.modal__close-button {
+ cursor: pointer;
+ position: absolute;
+ right: 10px;
+ top: 5px;
+}
+
+.modal__close-button:hover {
+  text-shadow: 0 0 10px white;
+}
+
+.modal__input {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  
+}
+.modal-control {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.modal__label {
+  margin-bottom: 5px;
+}
