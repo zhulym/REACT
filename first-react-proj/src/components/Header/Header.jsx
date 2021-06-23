@@ -1,6 +1,8 @@
+import { React, useState, useEffect } from 'react';
 import MenuItem from './MenuItem'
 import Greeting from './Greeting/Greeting'
-import { React, useState, useEffect } from 'react';
+import Shopping from './Shopping/Shopping'
+
 
 const Header = (props) => {
 
@@ -16,6 +18,7 @@ const Header = (props) => {
         </ul>
       </nav>
       < Greeting />
+      < Shopping />
     </header>
   )
 }

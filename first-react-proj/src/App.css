@@ -3,9 +3,9 @@ html, body {
   position: relative;
 }
 
-.App {
-  text-align: center;
-}
+/* .App {
+  
+} */
 
 .App-header {
   min-height: 100vh;
@@ -32,6 +32,7 @@ html, body {
  background-color: #61DAFB;
  padding: 7px;
  border-radius: 5px;
+ text-align: center;
 }
 
 .header__menu li a {
@@ -45,13 +46,19 @@ html, body {
   text-decoration: underline;
 }
 
+
+/* Greeting Task With Modal */
+
+
 .greeting__content-button,
 .modal__submit {
   padding: 7px;
   cursor: pointer;
+  margin-left: 15px;
+  text-align: center;
 }
 
-#greeting__modal {
+.greeting__modal {
   position: fixed;
   top: 40%;
   left: 50%;
@@ -61,10 +68,6 @@ html, body {
   background-color: #4e5768;
   border-radius: 5px;
   
-}
-
-.hide__modal {
-  display: none;
 }
 
 .modal__close-button {
@@ -95,3 +98,65 @@ html, body {
 .modal__label {
   margin-bottom: 5px;
 }
+
+/* Shopping Task */
+.shopping__container{
+  color: #2f353f;
+  font-weight: 700;
+  width: 1200px;
+  margin: 30px auto;
+}
+.shopping__header {
+
+  background-color: rgb(191, 209, 248);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.shopping__header-item{
+  color: rgb(158, 85, 218);
+  text-align: left;
+  line-height: 50px;
+  font-size: 30px;
+  margin-right: 20px;
+
+}
+
+.shopping__counter{
+  background-color: rgb(158, 85, 218);
+  border-radius: 10px;
+  padding: 0px 25px;
+  line-height: 50px;
+  margin-right: 20px;
+}
+
+.shopping__amount {
+  background-color: rgb(158, 85, 218);
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+}
+
+.margin-right {
+  margin-right: 10PX;
+}
+
+.btn-secondary, .btn-info {
+  color: rgb(255, 255, 255);
+}
+
+.btn-secondary:hover{
+  color: rgb(0, 0, 0);
+}
+
+
+
