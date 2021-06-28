@@ -1,6 +1,9 @@
 import { React, useState, useEffect } from 'react';
 
+
+
 const Shopping = () => {
+
     const [commonCounter, setCommonCounter] = useState(0);
 
     const [count1, setCount1] = useState(0);
@@ -16,23 +19,14 @@ const Shopping = () => {
     const [isDisabled, setIsDisabled] = useState('disabled');
 
     useEffect(() => {
-        const isDisabled1 = (count1 > 0) ? setIsDisabled1('') : setIsDisabled1('disabled');
-        const isDisabled2 = (count2 > 0) ? setIsDisabled2('') : setIsDisabled2('disabled');
-        const isDisabled3 = (count3 > 0) ? setIsDisabled3('') : setIsDisabled3('disabled');
-        const isDisabled4 = (count4 > 0) ? setIsDisabled4('') : setIsDisabled4('disabled');
+        (count1 > 0) ? setIsDisabled1('') : setIsDisabled1('disabled');
+        (count2 > 0) ? setIsDisabled2('') : setIsDisabled2('disabled');
+        (count3 > 0) ? setIsDisabled3('') : setIsDisabled3('disabled');
+        (count4 > 0) ? setIsDisabled4('') : setIsDisabled4('disabled');
     });
 
     useEffect(() => {
-        if (count1 === 1) {
-            setCommonCounter(commonCounter + 1);
-        }
-        if (count2 === 1) {
-            setCommonCounter(commonCounter + 1);
-        }
-        if (count3 === 1) {
-            setCommonCounter(commonCounter + 1);
-        }
-        if (count4 === 1) {
+        if (count1 === 1 || count2 === 1 || count3 === 1 || count4 === 1) {
             setCommonCounter(commonCounter + 1);
         }
     }, [count1, count2, count3, count4]);
@@ -52,10 +46,7 @@ const Shopping = () => {
     }
 
     useEffect(() => {
-        if (!showShoppingItem1
-            && !showShoppingItem2
-            && !showShoppingItem3
-            && !showShoppingItem4) {
+        if (!showShoppingItem1 && !showShoppingItem2 && !showShoppingItem3 && !showShoppingItem4) {
             setIsDisabled('');
         }
     });
@@ -115,8 +106,6 @@ const Shopping = () => {
                     </div>
                 )}
             </div>
-
-
 
         </div >
     )

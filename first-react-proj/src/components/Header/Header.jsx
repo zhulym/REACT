@@ -1,8 +1,7 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import MenuItem from './MenuItem'
 import Greeting from './Greeting/Greeting'
 import Shopping from './Shopping/Shopping'
-
 
 const Header = (props) => {
 

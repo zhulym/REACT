@@ -48,8 +48,12 @@ html, body {
 
 
 /* Greeting Task With Modal */
-
-
+.greeting__button-container{
+  margin-left: calc(50% - 120px);
+}
+.greeting__container{
+  margin-left: calc(50% - 70px);
+}
 .greeting__content-button,
 .modal__submit {
   padding: 7px;
