@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from './components/Header/Header'
+import Training from './components/Footer/Training/Training'
+
 import RandomNumber from './components/RandomNumber'
 import './App.css';
 
@@ -20,6 +22,7 @@ const App = () => {
     <div className="App">
       <Header items={menuItems} />
       <RandomNumber min={min} max={max} />
+      <Training />
 
     </div>
   );
