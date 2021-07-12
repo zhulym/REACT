@@ -1,20 +1,20 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 
 const shoppingItems = [
     {
-        id: 'ONE',
+        id: '1',
         count: 0
     },
     {
-        id: 'TWO',
+        id: '2',
         count: 0
     },
     {
-        id: 'THREE',
+        id: '3',
         count: 0
     },
     {
-        id: 'FOUR',
+        id: '4',
         count: 0
     }
 ];
@@ -24,12 +24,12 @@ const Shopping = () => {
 
     const [items, setItems] = useState(shoppingItems);
 
-    const amountShoppingItems = items.filter(item => item.count);
+    // const amountShoppingItems = items.filter(item => item.count);
 
-    const removeItem = id => { };
+    const removeItem = id => {};
 
     const setShoppingItems = (id, direction) => {
-        setItems(prevState => {
+        setItems( () => {
 
             return items.map(item =>
                 item.id === id
@@ -37,8 +37,8 @@ const Shopping = () => {
                         ...item,
                         count:
                             direction === 'increment'
-                                ? (item.count += 1)
-                                : (item.count -= 1)
+                                ? (item.count + 1)
+                                : (item.count - 1)
                     }
                     : item
             );
@@ -57,7 +57,7 @@ const Shopping = () => {
 
 
             <div className="shopping__main-buttons">
-                <button class="btn btn-success m-2  margin-left"><i class="bi bi-arrow-repeat"></i></button>
+                <button class="btn btn-success m-2  margin-left" onClick={() => setItems(shoppingItems)}><i class="bi bi-arrow-repeat"></i></button>
                 <button class="btn btn-primary m-2" onClick={() => window.location.reload()}><i class="bi bi-recycle"></i></button>
             </div>
 

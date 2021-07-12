@@ -3,7 +3,6 @@ import { React, useState, useEffect } from 'react';
 const Training = () => {
 
     const [type, setType] = useState('Users');
-    const [data, setData] = useState([]);
     const [pos, setPos] = useState({
         x: 0,
         y: 0
@@ -28,7 +27,6 @@ const Training = () => {
 
             <div>{pos.x}</div>
             <div>{pos.y}</div>
-
         </div>
     );
 }
