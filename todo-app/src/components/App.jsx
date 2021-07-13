@@ -1,11 +1,13 @@
-import './App.css';
+import React from 'react';
+import Todo from './Todo/index'
+
+import './App.sass';
+
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-
-      </header>
+    <div className="app-header">
+      <Todo />
     </div>
   );
 }
