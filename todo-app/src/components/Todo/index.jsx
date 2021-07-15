@@ -1,30 +1,95 @@
-import React from 'react';
-import TodoList from '../TodoList/index'
+import React, { useState, useEffect } from "react";
+import { ContextTodo } from "../context";
+import { Button } from "reactstrap";
+import TodoList from "../TodoList/index";
 
 const Todo = () => {
-  const todoList = [
-    {id:1, title: 'Learn HTML/CSS', completed: true},
-    {id:2, title: 'Learn JS', completed: true},
-    {id:3, title: 'Learn REACT', completed: true},
-    {id:4, title: 'Learn NODE.JS', completed: false},
-    {id:5, title: 'Learn MySQL', completed: false},
-  ]
+  const [todos, setTodos] = useState([]);
+  const [todoTitle, setTodoTitle] = useState("");
 
-//   const [state, setState] = useState(todoList);
+  useEffect(() => {
+    const tasks = localStorage.getItem("todos") || [];
+    setTodos(JSON.parse(tasks));
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
+  const addTodo = () => {
+    setTodos([
+      ...todos,
+      {
+        id: new Date(),
+        title: todoTitle,
+        completed: false,
+      },
+    ]);
+    setTodoTitle("");
+  };
+
+  const addTodoItem = (event) => {
+    if (event.target.value === "") return;
+    if (event.key === "Enter") {
+      addTodo();
+    }
+  };
+
+  const addTodoItemOnClick = () => {
+    if (todoTitle === "") return;
+    addTodo();
+  };
+
+  const removeTodo = (id) => {
+    setTodos(
+      todos.filter((todo) => {
+        return todo.id !== id;
+      })
+    );
+  };
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  };
 
   return (
-    <div className="container">
-        <h1>Todo List</h1>
+    <ContextTodo.Provider value={{ removeTodo, toggleTodo }}>
+      <div className="container">
+        <h1>Todo App</h1>
+        <div className="iii"></div>
         <div className="input-field">
-            <input type="text" name="task" id="input-task" />
-            <label htmlFor="input-task">Next todo</label>
+          <label className="input-label" htmlFor="input-task">
+            Next todo
+          </label>
+
+          <input
+            type="text"
+            name="task"
+            value={todoTitle}
+            onChange={(event) => setTodoTitle(event.target.value)}
+            onKeyPress={addTodoItem}
+          />
         </div>
 
-        <TodoList todos={todoList}/>
-    </div>
+        <Button
+          className="input-button"
+          color="success"
+          onClick={addTodoItemOnClick}
+        >
+          Add new task
+        </Button>
+
+        <TodoList todos={todos} />
+      </div>
+    </ContextTodo.Provider>
   );
-}
+};
 
 export default Todo;
