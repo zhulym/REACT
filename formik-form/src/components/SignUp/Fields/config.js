@@ -26,14 +26,15 @@ export const SignUpSchema = yup.object().shape({
         .min(minPasswordLength, 'Password is too short - should be 1 chars minimum!')
         .matches(/[a-zA-Z0-9]/, 'Password can only contain Latin letters!'),
     zip: yup.string()
-        .required('Zip is a required field!')
         .matches(/^[0-9]+$/, 'Must be only digits')
         .min(minZipLength, 'Must be exactly 5 digits')
         .max(minZipLength, 'Must be exactly 5 digits'),
     checkbox: yup
         .bool()
         .oneOf([true], 'Accept conditions!'),
-    // state: yup
-    //     .string()
-    //     .required('State is a required field!'),
+    state: yup
+        .string()
+        .required('State is a required field!'),
+    country: yup
+        .string(),
 });

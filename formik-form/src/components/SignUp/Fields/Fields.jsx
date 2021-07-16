@@ -1,10 +1,10 @@
 // libraries
 import React from 'react';
 import { ButtonToggle } from 'reactstrap';
-import { ErrorMessage } from 'formik';
 // static
 import FormControl from '../../shared/FormControl/FormControl';
 import { usaStates } from '../../../constants/constants';
+import SelectField from '../../shared/SelectField/index';
 // styles
 
 const Fields = props => {
@@ -54,40 +54,34 @@ const Fields = props => {
         label="Password"
         id="registration__password"
       />
-      <div className="select__container">
-        <label className="form-label form-label-country" htmlFor="form-select-country">
-          Country
-        </label>
-        <select
-          id="form-select-country"
-          className="form-select form-select-custom"
-          name="country"
-          aria-label="Disabled select example"
-          disabled
-        >
-          <option>USA</option>
-        </select>
-      </div>
-      <div className="select__container">
-        <label className="form-label form-label-state" htmlFor="form-select-state">
-          State
-        </label>
-        <select
-          className="form-select form-select-custom"
-          id="form-select-state"
-          name="state"
-          aria-label="Default select example"
-          onChange={e => props.stateCallBack(e.target.value)}
-        >
-          <option selected>Your State</option>
-          {usaStates.map((item, i) => (
-            <option key={i} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-        <ErrorMessage name="state">{msg => <div className="error">{msg}</div>}</ErrorMessage>
-      </div>
+      <SelectField
+        label="Country"
+        className="form-label form-label-country"
+        id="form-select-country"
+        selectClassName="form-select form-select-custom"
+        name="country"
+        aria-label="Disabled select example"
+        disabled
+      >
+        <option>USA</option>
+      </SelectField>
+      <SelectField
+        {...props}
+        label="State"
+        className="form-label form-label-state"
+        selectClassName="form-select form-select-custom"
+        id="form-select-state"
+        name="state"
+        aria-label="Default select example"
+        stateCallBack={props.stateCallBack}
+      >
+        <option selected>Your State</option>
+        {usaStates.map((item, i) => (
+          <option key={i} value={item}>
+            {item}
+          </option>
+        ))}
+      </SelectField>
       <FormControl {...props} type="text" name="zip" placeholder="Zip" label="Zip code" id="registration__zip" />
       <FormControl {...props} type="checkbox" name="checkbox" id="registration__conditions">
         <span className="registration__terms">I accept the terms and conditions</span>
