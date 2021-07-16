@@ -28,7 +28,7 @@ module.exports = {
         }
     },
     rules: {
-        indent: ['warn', 4],
+        indent: ['warn', 2],
         semi: ['warn', 'always'],
         'linebreak-style': 'off',
         strict: 0,
