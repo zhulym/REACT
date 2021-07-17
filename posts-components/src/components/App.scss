@@ -1,0 +1,33 @@
+/*==================================== COLORS var ==========================================*/
+$mainBack: #6a7688;
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+body {
+  color: #61dafb;
+  background-color: $mainBack;
+}
+
+a {
+  color: #61dafb;
+  text-decoration: none;
+  &:hover {
+    color: #aceafc;
+    text-shadow: 0 0 15px #aceafc;
+  }
+}
+
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
