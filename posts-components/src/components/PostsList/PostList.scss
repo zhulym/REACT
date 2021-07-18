@@ -1,4 +1,17 @@
 .post__link {
+    max-width: 50%;
     display: block !important;
     text-transform: capitalize;
+    padding: 7px 15px;
+}
+
+.post__container {
+    display: flex;
+    justify-content: space-between;
+    &:nth-child(2n) {
+        background-color: #353e4e;
+    }
+    &:nth-child(2n-1) {
+        background-color: #454e5e;
+    }
 }

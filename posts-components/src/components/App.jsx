@@ -13,8 +13,8 @@ const App = () => {
   return (
     <Layout className="layout__content">
       <Switch>
-        <Route path="/" component={PostsList} />
-        <Route path="post/:id" component={SinglePost} />
+        <Route exact path="/" component={PostsList} />
+        <Route path="/post/:id" component={SinglePost} />
       </Switch>
     </Layout>
   );

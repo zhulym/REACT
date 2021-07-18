@@ -7,3 +7,11 @@ export const getPosts = () => {
 export const getSinglePost = id => {
     return sendRequest(`/posts/${id}`);
 };
+
+export const deletePost = id => {
+    return sendRequest(`/posts/${id}`, 'DELETE');
+};
+
+export const createPost = () => {
+    return sendRequest('/posts', 'POST');
+};
