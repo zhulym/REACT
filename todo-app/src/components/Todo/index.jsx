@@ -1,69 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { ContextTodo } from "../context";
 import { Button } from "reactstrap";
 import TodoList from "../TodoList/index";
+import reduser from "../../reduser";
 
 const Todo = () => {
-  const [todos, setTodos] = useState([]);
+  const [state, dispatch] = useReducer(
+    reduser,
+    JSON.parse(localStorage.getItem("todos"))
+  );
+
   const [todoTitle, setTodoTitle] = useState("");
 
   useEffect(() => {
-    const tasks = localStorage.getItem("todos") || [];
-    setTodos(JSON.parse(tasks));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const addTodo = () => {
-    setTodos([
-      ...todos,
-      {
-        id: new Date(),
-        title: todoTitle,
-        completed: false,
-      },
-    ]);
-    setTodoTitle("");
-  };
+    localStorage.setItem("todos", JSON.stringify(state));
+  }, [state]);
 
   const addTodoItem = (event) => {
     if (event.target.value === "") return;
     if (event.key === "Enter") {
-      addTodo();
+      dispatch({
+        type: "add",
+        payload: todoTitle,
+      });
+      setTodoTitle("");
     }
   };
 
   const addTodoItemOnClick = () => {
     if (todoTitle === "") return;
-    addTodo();
-  };
-
-  const removeTodo = (id) => {
-    setTodos(
-      todos.filter((todo) => {
-        return todo.id !== id;
-      })
-    );
-  };
-
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
-      })
-    );
+    dispatch({
+      type: "add",
+      payload: todoTitle,
+    });
+    setTodoTitle("");
   };
 
   return (
-    <ContextTodo.Provider value={{ removeTodo, toggleTodo }}>
+    <ContextTodo.Provider value={{ dispatch }}>
       <div className="container">
         <h1>Todo App</h1>
-        <div className="iii"></div>
         <div className="input-field">
           <label className="input-label" htmlFor="input-task">
             Next todo
@@ -86,7 +62,7 @@ const Todo = () => {
           Add new task
         </Button>
 
-        <TodoList todos={todos} />
+        <TodoList todos={state} />
       </div>
     </ContextTodo.Provider>
   );

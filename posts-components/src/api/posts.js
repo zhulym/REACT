@@ -12,6 +12,10 @@ export const deletePost = id => {
     return sendRequest(`/posts/${id}`, 'DELETE');
 };
 
-export const createPost = () => {
-    return sendRequest('/posts', 'POST');
+export const createPost = (data) => {
+    return sendRequest('/posts', 'POST', data);
+};
+
+export const updatePost = (id, data) => {
+    return sendRequest(`/posts/${id}`, 'PUT', data);
 };

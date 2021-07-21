@@ -13,9 +13,11 @@ const Header = () => {
         <Link to="/" className="header__link">
           Posts Application
         </Link>
-        <Button outline color="primary">
-          Add Post
-        </Button>{" "}
+        <Link to="/create-post">
+          <Button outline color="primary" className="addPost-button">
+            Add Post
+          </Button>{" "}
+        </Link>
       </div>
     </header>
   );

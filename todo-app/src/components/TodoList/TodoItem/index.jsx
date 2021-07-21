@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ContextTodo } from "../../context";
 
 const TodoItem = (props) => {
-  const { removeTodo, toggleTodo } = useContext(ContextTodo);
+  const { dispatch } = useContext(ContextTodo);
 
   return (
     <div className="todo__item">
@@ -13,7 +13,12 @@ const TodoItem = (props) => {
             className="item__checkbox"
             type="checkbox"
             checked={props.completed}
-            onChange={() => toggleTodo(props.id)}
+            onChange={() =>
+              dispatch({
+                type: "toggle",
+                payload: props.id,
+              })
+            }
           />
           <span className={props.completed ? "item__checked" : ""}>
             {props.title}
@@ -24,7 +29,12 @@ const TodoItem = (props) => {
           <button
             type="button"
             class="btn btn-outline-danger"
-            onClick={() => removeTodo(props.id)}
+            onClick={() =>
+              dispatch({
+                type: "remove",
+                payload: props.id,
+              })
+            }
           >
             <i class="bi bi-trash-fill"></i>Delete
           </button>

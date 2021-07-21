@@ -24,10 +24,14 @@ const PostsList = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-  const deleteOnClick = (id) => {
-    if (window.confirm("Are you sure?")) {
-      deletePost(id);
-      console.log(id);
+  const deleteOnClick = async (id) => {
+    try {
+      if (window.confirm("Are you sure?")) {
+        await deletePost(id);
+        await fetchPosts();
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -39,13 +43,22 @@ const PostsList = () => {
             <Link className="post__link" key={post.id} to={`/post/${post.id}`}>
               {post.title}
             </Link>
-            <Button
-              outline
-              color="danger"
-              onClick={() => deleteOnClick(post.id)}
-            >
-              Delete Post
-            </Button>
+
+            <div className="button__container">
+              <Link to={`/edit-post/${post.id}`}>
+                <Button outline color="primary">
+                  Edit Post
+                </Button>
+              </Link>
+              <Button
+                className="edit-button"
+                outline
+                color="danger"
+                onClick={() => deleteOnClick(post.id)}
+              >
+                Delete Post
+              </Button>
+            </div>
           </div>
         );
       })}
