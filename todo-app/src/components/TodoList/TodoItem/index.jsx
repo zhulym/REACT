@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { ContextTodo } from "../../context";
 
 const TodoItem = (props) => {
-  const { dispatch } = useContext(ContextTodo);
+  const { dispatch, setTodoTitle, setIsEdited, setTitleBeforeEdit } =
+    useContext(ContextTodo);
 
   return (
     <div className="todo__item">
@@ -16,29 +17,41 @@ const TodoItem = (props) => {
             onChange={() =>
               dispatch({
                 type: "toggle",
-                payload: props.id,
+                id: props.id,
               })
             }
           />
           <span className={props.completed ? "item__checked" : ""}>
-            {props.title}
+            {props.point}. {props.title}
           </span>
         </div>
 
-        <span>
+        <div>
+          <span className="creating-date">{props.date}</span>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            onClick={() => {
+              setTodoTitle(props.title);
+              setIsEdited(true);
+              setTitleBeforeEdit(props.title);
+            }}
+          >
+            Edit
+          </button>
           <button
             type="button"
             class="btn btn-outline-danger"
-            onClick={() =>
+            onClick={() => {
               dispatch({
                 type: "remove",
-                payload: props.id,
-              })
-            }
+                title: props.title,
+              });
+            }}
           >
             <i class="bi bi-trash-fill"></i>Delete
           </button>
-        </span>
+        </div>
       </div>
     </div>
   );
