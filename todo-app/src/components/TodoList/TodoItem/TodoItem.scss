@@ -1,0 +1,32 @@
+.todo__item {
+    &:nth-child(2n-1) {
+        background-color: #91a1bb;
+    }
+    button {
+        padding: 2px 10px;
+        margin-left: 10px;
+    }
+    input[type="checkbox"] {
+        position: relative;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.item__wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+}
+
+.item__checkbox {
+    margin-right: 10px;
+}
+
+.item__completed {
+    text-decoration: line-through;
+}

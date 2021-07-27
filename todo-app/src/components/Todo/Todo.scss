@@ -1,0 +1,27 @@
+.container {
+    min-width: 600px;
+    padding: 20px;
+}
+.input-label {
+    font-style: oblique;
+    text-transform: capitalize;
+}
+
+.input-field {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    input {
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        padding: 5px;
+        &:focus {
+            box-shadow: 0 0 5px 2px rgb(10, 119, 10);
+        }
+    }
+}
+
+.input-button {
+    margin-bottom: 10px;
+}

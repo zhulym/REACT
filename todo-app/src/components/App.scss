@@ -18,46 +18,9 @@ $mainBack: #666f83;
   padding: 20px;
   margin: 0 auto;
 }
-.container {
-  min-width: 600px;
-  padding: 20px;
-}
-.input-label {
-  font-style: oblique;
-  text-transform: capitalize;
-}
 
 .iii {
   line-height: 100px;
-}
-
-.input-field {
-  display: block;
-  margin-bottom: 20px;
-  width: 100%;
-  input {
-    width: 100%;
-    outline: none;
-    border-radius: 5px;
-    padding: 5px;
-    &:focus {
-      box-shadow: 0 0 5px 2px rgb(10, 119, 10);
-    }
-  }
-}
-
-.input-button {
-  margin-bottom: 10px;
-}
-
-.item__wrap {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 10px 5px 10px;
-}
-
-.item__checked {
-  text-decoration: line-through;
 }
 
 .app-link {
@@ -66,27 +29,4 @@ $mainBack: #666f83;
 
 .list__container {
   background-color: $mainBack;
-}
-
-.todo__item {
-  &:nth-child(2n-1) {
-    background-color: #91a1bb;
-  }
-  button {
-    padding: 2px 10px;
-    margin-left: 10px;
-  }
-  input[type="checkbox"] {
-    position: relative;
-    top: 5px;
-    width: 20px;
-    height: 20px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-.item__checkbox {
-  margin-right: 10px;
 }

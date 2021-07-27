@@ -3,7 +3,7 @@ export default function (state, action) {
     const date = new Date().toLocaleDateString('ru-RU', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
 
     switch (action.type) {
-        case 'add':
+        case 'add-edit':
             if (action.edited) {
                 return state.map((todo) => {
                     if (todo.title === action.titleBefore) {
@@ -20,11 +20,13 @@ export default function (state, action) {
                     title: action.title,
                     completed: false,
                     date: date,
+                    deadLineTime: new Date().getTime(),
+                    className: ''
                 }
             ]
         case 'toggle':
             return state.map((todo) => {
-                if (todo.id === action.id) {
+                if (todo.title === action.title) {
                     todo.completed = !todo.completed;
                 }
                 return todo;

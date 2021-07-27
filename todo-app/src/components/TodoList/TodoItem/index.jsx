@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { ContextTodo } from "../../context";
+//style
+import "./TodoItem.scss";
 
 const TodoItem = (props) => {
   const { dispatch, setTodoTitle, setIsEdited, setTitleBeforeEdit } =
@@ -17,11 +19,15 @@ const TodoItem = (props) => {
             onChange={() =>
               dispatch({
                 type: "toggle",
-                id: props.id,
+                title: props.title,
               })
             }
           />
-          <span className={props.completed ? "item__checked" : ""}>
+          <span
+            className={
+              props.completed || props.className ? "item__completed" : ""
+            }
+          >
             {props.point}. {props.title}
           </span>
         </div>
