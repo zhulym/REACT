@@ -1,27 +1,16 @@
 // libraries
 import React from 'react';
 // static
-import logo from 'assets/images/logo.svg';
+import Instructions from './Instructions/index';
+import Options from './Options/index';
 // styles
 import './App.css';
 
 const App = () => {
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+            <Instructions />
+            <Options />
         </div>
     );
 };
