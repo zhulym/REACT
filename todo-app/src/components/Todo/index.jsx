@@ -23,7 +23,6 @@ const Todo = () => {
   useEffect(() => {
     const checkDeadline = setInterval(() => {
       if (state.length === 0) return;
-      debugger;
       const deadlineElem = state.find(
         (item) =>
           new Date().getTime() - item.deadLineTime >= deadLine && !item.completed && !item.className
