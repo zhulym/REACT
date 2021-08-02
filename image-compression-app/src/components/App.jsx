@@ -2,7 +2,7 @@
 import React from 'react';
 // static
 import Instructions from './Instructions/index';
-import Options from './Options/index';
+import Compressor from './Compressor/index';
 // styles
 import './App.css';
 
@@ -10,7 +10,7 @@ const App = () => {
     return (
         <div className="App">
             <Instructions />
-            <Options />
+            <Compressor />
         </div>
     );
 };
