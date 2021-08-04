@@ -17,6 +17,7 @@ const Compressor = () => {
   const [inputUrl, setInputUrl] = useState('');
   const [outputUrl, setOutputUrl] = useState('');
 
+  const [imageFile, setImageFile] = useState('');
   const [imageName, setImageName] = useState('');
   const [sizeBefore, setSizeBefore] = useState('');
 
@@ -28,13 +29,15 @@ const Compressor = () => {
   const [maxSize, setMaxSize] = useState(1);
   const [maxWidth, setMaxWidth] = useState(1366);
 
-  const handleImageUpload = async (event) => {
+  const handleImageUpload = (event) => {
     const imageFile = event.target.files[0];
+    setImageFile(imageFile);
     setImageName(imageFile.name);
     setSizeBefore(`${(imageFile.size / 1024 / 1024).toFixed(2)} mb`);
     setInputUrl(URL.createObjectURL(imageFile));
     setIsUpload(true);
-
+  }
+  const handleCompressClick = async () => {
     const options = {
       maxSizeMB: maxSize,
       maxWidthOrHeight: maxWidth,
@@ -48,8 +51,6 @@ const Compressor = () => {
     } catch (error) {
       console.log(error);
     }
-  }
-  const handleCompressClick = () => {
     setOutputUrl(URL.createObjectURL(compressedImage));
     setIsClicked(true);
   }

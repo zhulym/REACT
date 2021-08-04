@@ -6,8 +6,11 @@ import reduser from "../../reduser";
 //style
 import "./Todo.scss";
 
+
+const deadLine = 5000;
+
 const Todo = () => {
-  const deadLine = 5000;
+
   const [state, dispatch] = useReducer(
     reduser,
     JSON.parse(localStorage.getItem("todos")) || []
@@ -50,7 +53,7 @@ const Todo = () => {
   }, [state]);
 
   const addTodoItemOnClick = () => {
-    if (todoTitle === "") return;
+    if (!todoTitle) return;
     dispatch({
       type: "add-edit",
       title: todoTitle,

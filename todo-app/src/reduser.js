@@ -24,13 +24,24 @@ export default function (state, action) {
                     className: ''
                 }
             ]
+        // case 'toggle':
+        //     return state.map((todo) => {
+        //         if (todo.title === action.title) {
+        //             todo.completed = !todo.completed;
+        //         }
+        //         return todo;
+        //     })
         case 'toggle':
             return state.map((todo) => {
                 if (todo.title === action.title) {
-                    todo.completed = !todo.completed;
+                    return {
+                        ...todo,
+                        completed: !todo.completed,
+                    }
                 }
+
                 return todo;
-            })
+            });
         case 'remove':
             return state.filter((todo) => todo.title !== action.title);
         default:
