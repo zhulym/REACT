@@ -21,7 +21,6 @@ const Compressor = () => {
   const [imageName, setImageName] = useState('');
   const [sizeBefore, setSizeBefore] = useState('');
 
-  const [compressedImage, setCompressedImage] = useState('');
   const [sizeAfter, setSizeAfter] = useState('');
   const [isClicked, setIsClicked] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
@@ -47,12 +46,12 @@ const Compressor = () => {
     try {
       const compressedImage = await imageCompression(imageFile, options);
       setSizeAfter(`${(compressedImage.size / 1024 / 1024).toFixed(2)} mb`)
-      setCompressedImage(compressedImage);
+      setOutputUrl(URL.createObjectURL(compressedImage));
+      setIsClicked(true);
     } catch (error) {
       console.log(error);
     }
-    setOutputUrl(URL.createObjectURL(compressedImage));
-    setIsClicked(true);
+
   }
 
   const handlePreviewClick = () => {
