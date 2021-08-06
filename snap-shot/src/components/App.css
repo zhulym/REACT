@@ -9,13 +9,18 @@
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 20px 200px;
+  padding: 20px;
   font-family: 'Asap', sans-serif;
 }
 
 h2, h3, p {
   margin: 0;
   padding: 0;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
 }
 
 ul, li {
@@ -54,6 +59,7 @@ a:hover {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  font-size: 24px;
 }
 
 .search__input {
@@ -88,4 +94,27 @@ input[type="text"] {
 
 .search-submit:hover {
   background-color: #636d85;
+}
+
+.app-content {
+  width: 1200px;
+  margin: 75px auto;
+}
+
+.image__card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image__card img {
+  max-width: 100%;
+  max-height: auto;
+  position: relative;
+  vertical-align: middle;
+  left: 50%;
+  transform: translate(-50%);
+  height: 290px;
+  width: 290px;
+  object-fit: cover;
 }

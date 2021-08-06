@@ -8,7 +8,7 @@ export const sendRequest = async (
     body = {},
     headers = {},
 ) => {
-    const requestUrl = `${baseUrl}/services/rest/?method=flickr.photos.search&api_key=636e1481b4f3c446d26b8eb6ebfe7127&tags=${query}&per_page=24&format=json&nojsoncallback=1`;
+    const requestUrl = `${baseUrl}${path}&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`;
     const options = {
         method,
         mode: 'cors',
@@ -22,22 +22,11 @@ export const sendRequest = async (
     }
 
     const response = await fetch(requestUrl, options);
-
     const contentType = response.headers.get('Content-Type');
 
-    if (contentType === 'application/json; Charset=UTF-8') {
+    if (contentType === 'application/json') {
         return await response.json();
     }
 
     throw new Error('Unexpected content type');
-};
-
-export const generateQueryString = (data = {}) => {
-    let query = '';
-
-    Object.keys(data).forEach(key => {
-        query += `&${key}=${data[key]}`;
-    });
-
-    return query;
 };
