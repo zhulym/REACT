@@ -1,0 +1,6 @@
+.search__default-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+}

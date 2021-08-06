@@ -1,5 +1,5 @@
 // libraries
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // static
 // styles
 import './QuickButtons.css';
@@ -7,7 +7,8 @@ import './QuickButtons.css';
 const QuickButtons = (props) => {
 
   const handleClick = (event) => {
-    props.onClickCallBack(event.target.innerHTML)
+    props.onClickCallBack(event.target.innerHTML);
+    props.setIsClickQuickButtonCallBack(!props.isClickQuickButton)
   }
 
   return (
