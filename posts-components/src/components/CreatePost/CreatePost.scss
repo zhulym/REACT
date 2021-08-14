@@ -10,3 +10,18 @@
     display: flex;
     flex-direction: column;
 }
+
+#post-title,
+#post-body {
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    padding: 7px;
+    color: rgb(62, 67, 75);
+}
+
+.create-post__buttons {
+    display: flex;
+    justify-content: space-between;
+}

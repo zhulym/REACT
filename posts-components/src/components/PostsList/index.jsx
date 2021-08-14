@@ -37,11 +37,11 @@ const PostsList = () => {
 
   return (
     <div className="posts__container">
-      {postsList.map((post) => {
+      {postsList.slice(0, 20).map((post) => {
         return (
           <div className="post__container">
             <Link className="post__link" key={post.id} to={`/post/${post.id}`}>
-              {post.title}
+              {post.title = post.title[0].toUpperCase() + post.title.slice(1)}
             </Link>
 
             <div className="button__container">

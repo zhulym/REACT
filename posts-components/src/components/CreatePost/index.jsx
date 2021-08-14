@@ -1,6 +1,8 @@
 //libraries
 import React, { useState, useCallback, useEffect } from "react";
 import { useHistory, useLocation, useParams } from "react-router-dom";
+import { Button } from "reactstrap";
+import { Link } from "react-router-dom";
 //components
 import { createPost, getSinglePost, updatePost } from "../../api/posts";
 //styles
@@ -73,6 +75,7 @@ const CreatePost = () => {
             type="text"
             name="title"
             value={postData.title}
+            placeholder="Title..."
             onChange={handleChange}
           />
         </div>
@@ -81,15 +84,23 @@ const CreatePost = () => {
           <textarea
             id="post-body"
             name="body"
-            rows="5"
+            rows="10"
             cols="22"
+            placeholder="Post..."
             value={postData.body}
             onChange={handleChange}
           />
         </div>
-        <button type="submit">
-          {isEditPage ? "Edit Post" : "Create Post"}
-        </button>
+        <div className="create-post__buttons">
+          <Button type="submit" color="info">
+            {isEditPage ? "Edit Post" : "Create Post"}
+          </Button>
+          <Link to="/">
+            <Button type="submit" color="danger">
+              Cancel
+            </Button>
+          </Link>
+        </div>
       </form>
     </div>
   );

@@ -1,13 +1,17 @@
 .post__link {
     max-width: 50%;
     display: block !important;
-    text-transform: capitalize;
+    // text-transform: capitalize;
     padding: 7px 15px;
 }
 
 .post__container {
+    width: 75%;
+    margin: 10px auto;
+    padding: 30px 15px;
     display: flex;
     justify-content: space-between;
+    border-radius: 7px;
     &:nth-child(2n) {
         background-color: #353e4e;
     }
@@ -18,4 +22,9 @@
 
 .edit-button {
     margin-left: 20px !important;
+}
+
+.button__container {
+    display: flex;
+    align-items: center;
 }
