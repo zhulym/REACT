@@ -8,6 +8,9 @@ import { deletePost } from "../../api/posts";
 import { getUser } from "../../api/posts";
 import { getUserPhotos } from "../../api/posts";
 import PostContent from "./PostContent/index";
+import { FormGroup } from "reactstrap";
+import { Label } from "reactstrap";
+import { Input } from "reactstrap";
 //styles
 import "./PostList.scss";
 
@@ -15,7 +18,7 @@ const PostsList = () => {
   const [postsList, setPostsList] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [usersPhotos, setUsersPhotos] = useState([]);
-
+  const [typeSort, setTypeSort] = useState('position');
 
   const fetchPosts = useCallback(async () => {
     try {
@@ -45,11 +48,38 @@ const PostsList = () => {
     }
   };
 
+  const sortPosts = (sort) => {
+    setTypeSort(sort);
+    switch (sort) {
+      case 'name': setUsersList([...usersList].sort((a, b) => a[sort].localeCompare(b[sort])))
+        break;
+      case 'city': setUsersList([...usersList].sort((a, b) => a.address[sort].localeCompare(b.address[sort])))
+        break;
+      default: setUsersList([...usersList].sort((a, b) => a[sort] - b[sort]));
+        break;
+    }
+  }
+
   return (
     <div className="posts__container">
+      <FormGroup className="posts__sort">
+        <Label htmlFor="sortSelect">Sort by:</Label>
+        <Input
+          className="posts__sort-input"
+          value={typeSort}
+          type="select"
+          name="select"
+          id="sortSelect"
+          onChange={(e) => sortPosts(e.target.value)}
+        >
+          <option value='id'>Position</option>
+          <option value='name'>Name</option>
+          <option value='city'>City</option>
+        </Input>
+      </FormGroup>
       {postsList.slice(0, 10).map((post, idx) => {
         return (
-          <div className="post__container">
+          <div className="post__container" key={idx}>
             <PostContent
               usersPhotos={usersPhotos}
               usersList={usersList}

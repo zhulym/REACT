@@ -27,5 +27,5 @@ export const getUser = () => {
     return sendRequest(`${baseUrl}/users`);
 };
 export const getUserPhotos = () => {
-    return sendRequest(`https://api.flickr.com${photoPath}&api_key=636e1481b4f3c446d26b8eb6ebfe7127&tags=cats&per_page=20&format=json&nojsoncallback=1`);
+    return sendRequest(`https://api.flickr.com${photoPath}&api_key=636e1481b4f3c446d26b8eb6ebfe7127&tags=cats&per_page=10&format=json&nojsoncallback=1`);
 };
