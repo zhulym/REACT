@@ -1,0 +1,37 @@
+.post__read-more {
+  color: #369729;
+  border-bottom: 1px solid #369729;
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: 15px;
+}
+
+.post__content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.post__content img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.post__user-name {
+  margin-left: 20px;
+  font-size: 28px;
+  color: #0d69d5;
+}
+
+.post__link {
+  width: 100%;
+  display: block !important;
+}
+
+.post__date {
+  display: inline-block;
+  padding-top: 15px;
+  color: #9db1ce;
+}

@@ -5,15 +5,25 @@ import { Button } from "reactstrap";
 //components
 import { getPosts } from "../../api/posts";
 import { deletePost } from "../../api/posts";
+import { getUser } from "../../api/posts";
+import { getUserPhotos } from "../../api/posts";
+import PostContent from "./PostContent/index";
 //styles
 import "./PostList.scss";
 
 const PostsList = () => {
   const [postsList, setPostsList] = useState([]);
+  const [usersList, setUsersList] = useState([]);
+  const [usersPhotos, setUsersPhotos] = useState([]);
+
 
   const fetchPosts = useCallback(async () => {
     try {
       const data = (await getPosts()) || [];
+      const userData = (await getUser()) || [];
+      const userPhotos = (await getUserPhotos()) || [];
+      setUsersPhotos(userPhotos.photos.photo);
+      setUsersList(userData);
       setPostsList(data);
     } catch (e) {
       console.log(e);
@@ -30,20 +40,22 @@ const PostsList = () => {
         await deletePost(id);
         await fetchPosts();
       }
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   };
 
   return (
     <div className="posts__container">
-      {postsList.slice(0, 20).map((post) => {
+      {postsList.slice(0, 10).map((post, idx) => {
         return (
           <div className="post__container">
-            <Link className="post__link" key={post.id} to={`/post/${post.id}`}>
-              {post.title = post.title[0].toUpperCase() + post.title.slice(1)}
-            </Link>
-
+            <PostContent
+              usersPhotos={usersPhotos}
+              usersList={usersList}
+              post={post}
+              idx={idx}
+            />
             <div className="button__container">
               <Link to={`/edit-post/${post.id}`}>
                 <Button outline color="primary">

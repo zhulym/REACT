@@ -1,12 +1,9 @@
-const baseUrl = process.env.REACT_APP_API_URL;
-
 export const sendRequest = async (
-    path,
+    requestUrl,
     method = 'GET',
     body = {},
     headers = {},
 ) => {
-    const requestUrl = `${baseUrl}${path}`;
     const options = {
         method,
         headers: {

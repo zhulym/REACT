@@ -23,7 +23,6 @@ const CreatePost = () => {
 
     try {
       const data = (await getSinglePost(id)) || {};
-
       setPostData(data);
     } catch (e) {
       console.log(e);

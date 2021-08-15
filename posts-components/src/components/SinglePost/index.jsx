@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 //components
 import { getSinglePost } from "../../api/posts";
 //styles
+import "./SinglePost.scss"
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -22,7 +23,18 @@ const SinglePost = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-  return <div className="posts__container">{postData.body}</div>;
+  return (
+    <div className="single-post__container">
+      <div className="single-post__user">
+
+      </div>
+      <div className="single-post__content">
+        {postData.body
+          + postData.body
+          + postData.body}
+      </div>
+
+    </div>);
 };
 
 export default SinglePost;
