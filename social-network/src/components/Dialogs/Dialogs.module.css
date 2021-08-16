@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    background-color: #b3b3b3;
+    height: 800px;
+}
+
+.dialogItems {
+    background-color: white;
+    padding: 10px;
+}
+
+.active {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #48418B;
+}
+
+.myFriends {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #48418B;
+    margin-bottom: 10px;
+}
+
+.messages {
+    margin-left: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+.textarea {
+    width: 99%;
+    background-color: white;
+    border-radius: 5px;
+    min-height: 100px;
+    resize: none;
+}

@@ -1,0 +1,16 @@
+.dialog {
+    border: 1px solid #d3caff;
+    margin-bottom: 10px;
+    padding: 3px;
+}
+
+.dialog:hover {
+    cursor: pointer;
+    border: 1px solid #a492ff;
+    box-shadow: 0px 0px 3px #374151;
+}
+
+.active {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #374151;
+}

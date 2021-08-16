@@ -1,0 +1,20 @@
+.background {
+  background-color: #374151;
+}
+
+.main {
+  display: grid;
+  width: 1100px;
+  margin: 0 auto;
+  grid-template-columns: 2fr 10fr;
+  grid-template-rows: 50px 1fr;
+  grid-gap: 8px;
+  grid-template-areas: "header header" "nav    cont" "footer footer";
+  background-color: #374151;
+}
+
+.background div {
+  border-radius: 5px;
+}
+
+@media (min-width: 510px) {}
