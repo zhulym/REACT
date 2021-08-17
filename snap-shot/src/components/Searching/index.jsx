@@ -1,6 +1,6 @@
 // libraries
 import React from 'react';
-// static
+// api
 import { getImages } from '../../api/images';
 // styles
 import './Searching.css';
@@ -24,20 +24,21 @@ const Searching = (props) => {
   };
 
   return (
-    <div className="search__input">
-      <input
-        type="text"
-        placeholder="Search"
-        value={props.searchTerm}
-        onChange={handleChange}
-      />
-      <button
-        className="search-submit"
-        type="submit"
-        onClick={handleSubmit}
-      >
-        Search
-      </button>
+    <div>
+      <form onSubmit={handleSubmit} className="search__form">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={props.searchTerm}
+          onChange={handleChange}
+        />
+        <button
+          className="search-submit"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
     </div>
   );
 };

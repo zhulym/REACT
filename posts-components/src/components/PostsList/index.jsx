@@ -1,34 +1,47 @@
 //libraries
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
 //components
+import PostContent from "./PostContent/index";
+import { Button } from "reactstrap";
+import { FormGroup } from "reactstrap";
+import { Label } from "reactstrap";
+import { Input } from "reactstrap";
+//api
 import { getPosts } from "../../api/posts";
 import { deletePost } from "../../api/posts";
 import { getUser } from "../../api/posts";
 import { getUserPhotos } from "../../api/posts";
-import PostContent from "./PostContent/index";
-import { FormGroup } from "reactstrap";
-import { Label } from "reactstrap";
-import { Input } from "reactstrap";
 //styles
 import "./PostList.scss";
 
 const PostsList = () => {
-  const [postsList, setPostsList] = useState([]);
+  const defaultSort = 'position';
   const [usersList, setUsersList] = useState([]);
-  const [usersPhotos, setUsersPhotos] = useState([]);
-  const [typeSort, setTypeSort] = useState('position');
+  const [typeSort, setTypeSort] = useState(defaultSort);
   const [searchValue, setSearchValue] = useState('');
+  const [searchedPosts, setSearchPosts] = useState([]);
 
   const fetchPosts = useCallback(async () => {
     try {
-      const data = (await getPosts()) || [];
+      const postData = (await getPosts()) || [];
       const userData = (await getUser()) || [];
-      const userPhotos = (await getUserPhotos()) || [];
-      setUsersPhotos(userPhotos.photos.photo);
-      setUsersList(userData);
-      setPostsList(data);
+      const imageData = (await getUserPhotos()) || [];
+
+      const usersPhotos = imageData.photos.photo;
+      const mixedData = userData.map((item, i) => {
+        return {
+          ...item,
+          title: postData[i].title,
+          body: postData[i].body,
+          imageId: usersPhotos[i].id,
+          owner: usersPhotos[i].owner,
+          secret: usersPhotos[i].secret,
+          server: usersPhotos[i].server,
+        }
+      })
+      setUsersList(mixedData);
+      setSearchPosts(mixedData);
     } catch (e) {
       console.log(e);
     }
@@ -62,16 +75,20 @@ const PostsList = () => {
     }
   }, [typeSort, usersList])
 
-  // const sortSearchPosts = useMemo(() => {
-  //   debugger
-  //   return sortedPosts.filter((post, i) => post[i].name.toLowerCase().includes(searchValue));
-  // }, [searchValue])
+  const sortSearchPosts = useMemo(() => {
+    return sortedPosts.filter((post) => post.name.toLowerCase().includes(searchValue));
+  }, [searchValue, sortedPosts])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchPosts(sortSearchPosts);
+  }
 
   return (
     <div className="posts__container">
       <div className="posts__search-sort-container">
         <FormGroup className="posts__sort">
-          <Label htmlFor="sortSelect">Sort by:</Label>
+          <Label className="posts__sort-label" htmlFor="sortSelect">Sort by:</Label>
           <Input
             className="posts__sort-input"
             value={typeSort}
@@ -86,51 +103,55 @@ const PostsList = () => {
           </Input>
         </FormGroup>
         <div className="post__search-group">
-          <input
-            className="post__search-input"
-            type="text"
-            value={searchValue}
-            placeholder='Search...'
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <Button
-            className="search-button"
-            color="info"
-          // onClick={() => deleteOnClick(post.id)}
-          >
-            Search
-          </Button>
+          <form action="#" onSubmit={(e) => handleSubmit(e)}>
+            <input
+              className="post__search-input"
+              type="text"
+              value={searchValue}
+              placeholder='Search...'
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+            <Button
+              className="search-button"
+              color="info"
+            >
+              Search
+            </Button>
+          </form>
         </div>
-
       </div>
 
-      {postsList.slice(0, 10).map((post, idx) => {
-        return (
-          <div className="post__container" key={idx}>
-            <PostContent
-              usersPhotos={usersPhotos}
-              usersList={sortedPosts}
-              post={post}
-              idx={idx}
-            />
-            <div className="button__container">
-              <Link to={`/edit-post/${post.id}`}>
-                <Button outline color="primary">
-                  Edit Post
+      {searchedPosts.length ? (
+        searchedPosts.map((post, i) => {
+          return (
+            <div className="post__container" key={i}>
+              <PostContent
+                post={post}
+              />
+              <div className="button__container">
+                <Link to={`/edit-post/${post.id}`}>
+                  <Button outline color="primary">
+                    Edit Post
+                  </Button>
+                </Link>
+                <Button
+                  className="edit-button"
+                  outline
+                  color="danger"
+                  onClick={() => deleteOnClick(post.id)}
+                >
+                  Delete Post
                 </Button>
-              </Link>
-              <Button
-                className="edit-button"
-                outline
-                color="danger"
-                onClick={() => deleteOnClick(post.id)}
-              >
-                Delete Post
-              </Button>
+              </div>
             </div>
+          );
+        }))
+        :
+        (
+          <div className="posts__search-fail">
+            {!usersList.length ? 'Loading...' : 'Posts not found, change the search query!'}
           </div>
-        );
-      })}
+        )}
     </div>
   );
 };

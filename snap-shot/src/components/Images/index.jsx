@@ -1,6 +1,5 @@
 // libraries
 import React from 'react';
-// static
 // styles
 import './Images.css';
 

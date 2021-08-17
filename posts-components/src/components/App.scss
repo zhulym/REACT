@@ -1,5 +1,4 @@
-/*==================================== COLORS var ==========================================*/
-$mainBack: #6a7688;
+@import "./constants";
 
 *,
 ::after,
@@ -7,12 +6,12 @@ $mainBack: #6a7688;
   box-sizing: border-box;
 }
 body {
-  color: #61dafb;
+  color: $textColor;
   background-color: $mainBack;
 }
 
 a {
-  color: #61dafb;
+  color: $textColor;
   text-decoration: none;
   transition: all 0.3s ease;
   &:hover {

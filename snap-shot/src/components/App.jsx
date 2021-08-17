@@ -1,15 +1,17 @@
 // libraries
 import React, { useState, useEffect } from 'react';
-// static
+// components
 import QuickButtons from './QuickButtons/index'
 import Searching from './Searching/index'
 import Images from './Images/index'
+// api
 import { getImages } from '../api/images';
 // styles
 import './App.css';
 
 const App = () => {
-    const [searchTerm, setSearchTerm] = useState("bmw");
+    const initialSearchString = 'bmw';
+    const [searchTerm, setSearchTerm] = useState(initialSearchString);
     const [imageData, setImageData] = useState([]);
     const [isClickQuickButton, setIsClickQuickButton] = useState(false);
 

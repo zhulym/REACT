@@ -1,23 +1,27 @@
 // libraries
 import React from 'react';
-// static
 // styles
 import './QuickButtons.css';
-
+const carButtons = [
+  { name: "Ferrari", value: 'ferrari' },
+  { name: "Lamborghini", value: 'lamborghini' },
+  { name: "Mercedes", value: 'mercedes' },
+  { name: "Maserati", value: 'maserati' },
+]
 const QuickButtons = (props) => {
 
-  const handleClick = (event) => {
-    props.onClickCallBack(event.target.innerHTML);
+
+  const handleClick = (value) => {
+    props.onClickCallBack(value);
     props.setIsClickQuickButtonCallBack(!props.isClickQuickButton)
   }
-
+  console.log('render', carButtons)
   return (
     <div className="search__default-links">
       <ul className="search__default-container">
-        <li><a href="#" onClick={handleClick}>Ferrari</a></li>
-        <li><a href="#" onClick={handleClick}>Lamborghini</a></li>
-        <li><a href="#" onClick={handleClick}>Mercedes</a></li>
-        <li><a href="#" onClick={handleClick}>Maserati</a></li>
+        {carButtons.map(car => {
+          return <li key={new Date()} onClick={() => handleClick(car.value)}>{car.name}</li>
+        })}
       </ul>
     </div>
   );
