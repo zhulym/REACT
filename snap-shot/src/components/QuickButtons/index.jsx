@@ -2,6 +2,7 @@
 import React from 'react';
 // styles
 import './QuickButtons.css';
+
 const carButtons = [
   { name: "Ferrari", value: 'ferrari' },
   { name: "Lamborghini", value: 'lamborghini' },
@@ -9,7 +10,6 @@ const carButtons = [
   { name: "Maserati", value: 'maserati' },
 ]
 const QuickButtons = (props) => {
-
 
   const handleClick = (value) => {
     props.onClickCallBack(value);
@@ -20,7 +20,7 @@ const QuickButtons = (props) => {
     <div className="search__default-links">
       <ul className="search__default-container">
         {carButtons.map(car => {
-          return <li key={new Date()} onClick={() => handleClick(car.value)}>{car.name}</li>
+          return <li key={car.name} onClick={() => handleClick(car.value)}>{car.name}</li>
         })}
       </ul>
     </div>

@@ -1,10 +1,14 @@
+//libraries
 import React from 'react';
+//components
+import Form from './components/Form';
+// styles
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-
+      <Form />
     </div>
   );
 }
