@@ -1,36 +1,65 @@
 import { useState } from 'react'
 
-export const useForm = (initialValues) => {
+export const useForm = (initialValues, validationShema) => {
   const [formValues, setFormValues] = useState(initialValues);
+  const [errors, setErrors] = useState(initialValues);
 
-  const onChange = (e) => {
-    // Проверка при необходимости
-    // if(!formValues[e.target.name]) {
-    //   console.error('Check initial values')
-    // }
-    const name = e.target.name;
-    const value = e.target.value;
+  const validateFieldValues = (name, value, shema) => {
+    if (shema.required && !value) {
+      setErrors(prevState => ({
+        ...prevState,
+        [name]: shema.message,
+      }))
+      return;
+    }
+
+    if (value && shema.regexp && !shema.regexp.test(value)) {
+      setErrors(prevState => ({
+        ...prevState,
+        [name]: shema.message,
+      }))
+      return;
+    }
+
+    setErrors(prevState => ({
+      ...prevState,
+      [name]: '',
+    }))
+  }
+
+  const handleFieldChange = (event) => {
+
+    const name = event.target.name;
+    const value = event.target.value;
 
     setFormValues(prevState => ({
       ...prevState,
       [name]: value,
     }))
+
+    if (event.type === 'blur') {
+      validateFieldValues(name, value, validationShema[name]);
+    }
   }
 
-  const onBlur = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+  const handleSubmit = (event, onSubmit) => {
+    event.preventDefault();
+    Object.keys(formValues).forEach((key) => {
+      validateFieldValues(key, formValues[key], validationShema[key]);
+    });
 
-    setFormValues(prevState => ({
-      ...prevState,
-      [name]: value,
-    }))
+    if (Object.keys(errors).some(key => errors[key])) {
+      return;
+    }
 
-    console.log(formValues)
+    onSubmit(formValues);
   }
 
-  const handleSubmit = (e, onSubmit) => {
-    onSubmit(e);
+  return {
+    handleSubmit,
+    onChange: handleFieldChange,
+    onBlur: handleFieldChange,
+    formValues,
+    errors,
   }
-  return { handleSubmit, onChange, onBlur }
 }
