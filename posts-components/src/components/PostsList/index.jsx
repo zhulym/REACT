@@ -16,19 +16,18 @@ import { getUserPhotos } from "../../api/posts";
 import "./PostList.scss";
 
 const PostsList = () => {
-  const defaultSort = 'position';
+  const defaultSort = 'id';
   const [usersList, setUsersList] = useState([]);
   const [typeSort, setTypeSort] = useState(defaultSort);
   const [searchValue, setSearchValue] = useState('');
-  const [searchedPosts, setSearchPosts] = useState([]);
 
   const fetchPosts = useCallback(async () => {
     try {
       const postData = (await getPosts()) || [];
       const userData = (await getUser()) || [];
       const imageData = (await getUserPhotos()) || [];
-
       const usersPhotos = imageData.photos.photo;
+
       const mixedData = userData.map((item, i) => {
         return {
           ...item,
@@ -41,7 +40,7 @@ const PostsList = () => {
         }
       })
       setUsersList(mixedData);
-      setSearchPosts(mixedData);
+      
     } catch (e) {
       console.log(e);
     }
@@ -79,11 +78,6 @@ const PostsList = () => {
     return sortedPosts.filter((post) => post.name.toLowerCase().includes(searchValue));
   }, [searchValue, sortedPosts])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearchPosts(sortSearchPosts);
-  }
-
   return (
     <div className="posts__container">
       <div className="posts__search-sort-container">
@@ -103,26 +97,22 @@ const PostsList = () => {
           </Input>
         </FormGroup>
         <div className="post__search-group">
-          <form action="#" onSubmit={(e) => handleSubmit(e)}>
+          <form action="#">
+            <label htmlFor="search-input" className="post__search-label">Search by name</label>
             <input
               className="post__search-input"
               type="text"
+              id="search-input"
               value={searchValue}
-              placeholder='Search...'
+              placeholder="Search..."
               onChange={(e) => setSearchValue(e.target.value)}
             />
-            <Button
-              className="search-button"
-              color="info"
-            >
-              Search
-            </Button>
           </form>
         </div>
       </div>
 
-      {searchedPosts.length ? (
-        searchedPosts.map((post, i) => {
+      {sortSearchPosts.length ? (
+        sortSearchPosts.map((post, i) => {
           return (
             <div className="post__container" key={i}>
               <PostContent
@@ -148,8 +138,22 @@ const PostsList = () => {
         }))
         :
         (
-          <div className="posts__search-fail">
-            {!usersList.length ? 'Loading...' : 'Posts not found, change the search query!'}
+          <div className="posts__fail-container">
+            <div className="posts__search-fail">
+              {!usersList.length ? 'Loading...' : 'Posts not found, change the search query!'}
+            </div>
+            {usersList.length ? (
+              <Button
+                className="posts__back-button"
+                color="info"
+                onClick={() => {
+                  setUsersList(usersList);
+                  setSearchValue('');
+                }}
+              >
+                Back
+              </Button>
+            ) : <></>}
           </div>
         )}
     </div>
