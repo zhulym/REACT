@@ -1,0 +1,33 @@
+@import "../../../constants";
+
+.post__search-input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: 1px solid #0d6efd;
+  color: $textColor;
+  background-color: #4c5363;
+  padding: 0px 10px !important;
+  &:hover {
+    cursor: text;
+    border-color: $textColor;
+    box-shadow: 0 0 10px $textColor;
+  }
+  &::placeholder {
+    color: #9db1ce;
+  }
+}
+
+.post__search-label {
+  width: 100%;
+  background-color: #0dcaf0;
+  color: rgb(53, 53, 53);
+  border: 1px solid #0d6efd;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 2px 10px;
+}

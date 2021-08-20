@@ -1,0 +1,32 @@
+@import "../../constants";
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(31, 53, 68, 0.7);
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.modal__content {
+  padding: 15px;
+  border-radius: 7px;
+  background-color: #579fb3;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  min-width: 400px;
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 //components
 import { getSinglePost } from "../../api/posts";
 //styles
-import "./SinglePost.scss"
+import "./SinglePost.scss";
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -29,9 +29,7 @@ const SinglePost = () => {
 
       </div>
       <div className="single-post__content">
-        {postData.body
-          + postData.body
-          + postData.body}
+        {postData.body + postData.body + postData.body}
       </div>
 
     </div>);

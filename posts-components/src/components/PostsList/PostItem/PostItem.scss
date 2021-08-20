@@ -1,0 +1,24 @@
+@import "../../constants";
+
+.post__container {
+  margin: 10px auto;
+  padding: 30px 15px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 7px;
+  &:nth-child(2n) {
+    background-color: $postOdd;
+  }
+  &:nth-child(2n-1) {
+    background-color: $postEven;
+  }
+}
+
+.edit-button {
+  margin-left: 20px !important;
+}
+
+.button__container {
+  display: flex;
+  align-items: center;
+}

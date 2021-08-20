@@ -1,0 +1,17 @@
+@import "../../constants";
+
+.posts__fail-container {
+  position: relative;
+}
+.posts__search-fail {
+  color: $textColor;
+  text-align: center;
+  font-size: 24px;
+}
+.posts__back-button {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  text-align: right;
+}
