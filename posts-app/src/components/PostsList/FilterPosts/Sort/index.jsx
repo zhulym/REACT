@@ -25,7 +25,7 @@ const Sort = ({ typeSort, setTypeSortCallBack }) => {
         onChange={(e) => setTypeSortCallBack(e.target.value)}
       >
         {selectOptions.map(option => (
-          <option value={option.value}>{option.text}</option>
+          <option key={option.value} value={option.value}>{option.text}</option>
         ))}
       </Input>
     </FormGroup>

@@ -40,17 +40,13 @@ const PostItem = ({ post, fetchPosts }) => {
           Delete Post
         </Button>
       </div>
-      <Modal
-        showModal={showModal}
-        setShowModalCallBack={setShowModal}
-      >
+      <Modal showModal={showModal} setShowModalCallBack={setShowModal}>
         <>
           <p>Are you sure?</p>
           <div className="modal__buttons">
             <Button color="danger" onClick={() => deleteOnClick(post.id)}>Delete</Button>
             <Button color="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
           </div>
-
         </>
       </Modal>
     </div>
