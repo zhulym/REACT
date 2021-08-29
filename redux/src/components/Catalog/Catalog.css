@@ -1,0 +1,6 @@
+.catalog {
+  background-color: rgb(48, 62, 77);
+  color: white;
+  height: calc(100vh - 115px);
+  padding: 20px;
+}

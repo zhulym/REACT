@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import reducer from './redusers';
+import { rootReduser } from './redusers/index';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 export const store = createStore(
-  reducer,
+  rootReduser,
   composeWithDevTools()
-)
+);

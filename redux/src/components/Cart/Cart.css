@@ -1,0 +1,6 @@
+.cart {
+  background-color: rgb(53, 78, 102);
+  color: white;
+  height: calc(100vh - 115px);
+  padding: 20px;
+}

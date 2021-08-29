@@ -1,6 +1,6 @@
-import todos from './todos';
+import cartReduser from './cart';
 import { combineReducers } from 'redux';
 
-export default combineReducers({
-  todos
-})
+export const rootReduser = combineReducers({
+  cartReduser
+});
