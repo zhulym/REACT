@@ -1,21 +1,15 @@
 // libraries
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   const goodsState = useSelector(({ cartReduser }) => cartReduser);
-  let getAmount = null;
 
+  let getAmount = null;
   goodsState.forEach(el => {
     getAmount += el.count;
   });
-
-  useEffect(() => {
-    goodsState.forEach(el => {
-      getAmount += el.count;
-    });
-  }, [goodsState]);
 
   return (
     <div className="header">
