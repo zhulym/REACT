@@ -1,20 +1,18 @@
+// libraries
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   const goodsState = useSelector(({ cartReduser }) => cartReduser);
-
   let getAmount = null;
 
   goodsState.forEach(el => {
-
     getAmount += el.count;
   });
 
   useEffect(() => {
     goodsState.forEach(el => {
-      debugger; // eslint-disable-line no-debugger
       getAmount += el.count;
     });
   }, [goodsState]);

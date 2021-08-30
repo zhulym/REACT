@@ -16,7 +16,7 @@ const Catalog = () => {
         return (
           <div key={item.id}>
             {i + 1}. {item.good} --- {item.price}
-            <button onClick={() => dispatch(addGood(i))} type="button">Add to Cart</button>
+            <button onClick={() => dispatch(addGood(item.id))} type="button">Add to Cart</button>
           </div>
         );
       })}

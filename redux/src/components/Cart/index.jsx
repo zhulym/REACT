@@ -14,7 +14,7 @@ const Cart = () => {
   let getAmount = null;
   const countAll = () => {
     goodsState.forEach(el => {
-      debugger; // eslint-disable-line no-debugger
+      // debugger; // eslint-disable-line no-debugger
       getAmount += el.count * Number(el.price.slice(0, el.price.length - 1));
     });
     console.log(`${getAmount}$`);
@@ -28,9 +28,9 @@ const Cart = () => {
             <div key={item.id}>
               <span>{item.good}  ---</span>
               <span>amount:</span>
-              <button type="button" onClick={() => dispatch(incrGood(item.id))}>-</button>
+              <button type="button" onClick={() => dispatch(decrGood(item.id))}>-</button>
               {item.count}
-              <button type="button" onClick={() => dispatch(decrGood(item.id))}>+</button>
+              <button type="button" onClick={() => dispatch(incrGood(item.id))}>+</button>
               <button type="button" onClick={() => dispatch(delGood(item.id))}>Delete</button>
             </div>
           )

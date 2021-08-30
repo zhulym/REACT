@@ -8,10 +8,10 @@ export const delGood = id => ({
 	payload: id
 });
 export const incrGood = id => ({
-	type: 'INCR_GOOD_FROM_CART',
+	type: 'INCR_GOOD',
 	payload: id
 });
 export const decrGood = id => ({
-	type: 'DECR_GOOD_FROM_CART',
+	type: 'DECR_GOOD',
 	payload: id
 });
