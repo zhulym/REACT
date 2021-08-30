@@ -14,7 +14,6 @@ const Cart = () => {
   let getAmount = null;
   const countAll = () => {
     goodsState.forEach(el => {
-      // debugger; // eslint-disable-line no-debugger
       getAmount += el.count * Number(el.price.slice(0, el.price.length - 1));
     });
     console.log(`${getAmount}$`);

@@ -4,8 +4,8 @@ const defaultState = [
 	{ id: 3, good: 'GOOD-3', price: '4$', count: 0 }
 ];
 
-
 export default function cartReduser(state = defaultState, action) {
+
 	switch (action.type) {
 		case 'ADD_GOOD_TO_CART':
 			return state.map(item => item.id === action.payload ? { ...item, count: 1 } : item);
