@@ -4,12 +4,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+  let getAmount = 0;
   const goodsState = useSelector(({ cartReduser }) => cartReduser);
-
-  let getAmount = null;
-  goodsState.forEach(el => {
-    getAmount += el.count;
-  });
+  goodsState.forEach(el => el.count ? getAmount += 1 : null);
 
   return (
     <div className="header">

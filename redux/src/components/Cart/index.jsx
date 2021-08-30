@@ -8,14 +8,12 @@ import { delGood, incrGood, decrGood } from '../../actions/cart'
 import './Cart.css';
 
 const Cart = () => {
+  let getAmount = 0;
   const dispatch = useDispatch();
   const goodsState = useSelector(({ cartReduser }) => cartReduser);
 
-  let getAmount = null;
   const countAll = () => {
-    goodsState.forEach(el => {
-      getAmount += el.count * Number(el.price.slice(0, el.price.length - 1));
-    });
+    goodsState.forEach(el => getAmount += el.count * Number(el.price.slice(0, el.price.length - 1)));
     console.log(`${getAmount}$`);
   }
 

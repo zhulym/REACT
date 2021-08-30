@@ -1,6 +1,6 @@
-export const addGood = i => ({
+export const addGood = id => ({
 	type: 'ADD_GOOD_TO_CART',
-	payload: i
+	payload: id
 });
 
 export const delGood = id => ({
