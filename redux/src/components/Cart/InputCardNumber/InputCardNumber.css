@@ -1,0 +1,14 @@
+.card-number {
+  margin: 10px 5px 10px 0px;
+  width: 35px;
+  padding: 3PX;
+}
+
+.input-card {
+  margin-top: 15px;
+  width: 200px;
+  padding: 10px 20px;
+  background-color: slategrey;
+  border-radius: 10px;
+  height: 130px;
+}

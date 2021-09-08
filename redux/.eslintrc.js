@@ -47,7 +47,7 @@ module.exports = {
             'warn',
             'always',
             {
-                arraysInObjects: false,  objectsInObjects: false
+                arraysInObjects: false, objectsInObjects: false
             }
         ],
         'comma-style': ['error', 'last'],
@@ -82,7 +82,7 @@ module.exports = {
         'padding-line-between-statements': [
             'warn',
             { blankLine: 'always', prev: ['const', 'let'], next: '*' },
-            { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let']}
+            { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] }
         ],
         'quote-props': ['warn', 'as-needed'],
         quotes: ['warn', 'single', { avoidEscape: true }],
