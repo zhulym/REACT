@@ -1,0 +1,19 @@
+@import "../../../constants";
+
+.post__share-social {
+  margin: 30px 0 0 15px;
+}
+
+.post__social-buttons {
+  margin-right: 10px;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.post__social-icon {
+  border-radius: 50%;
+  &:hover {
+    box-shadow: 0 0 10px $textColor;
+  }
+}

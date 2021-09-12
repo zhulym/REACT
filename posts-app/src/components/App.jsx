@@ -1,6 +1,7 @@
 //libraries
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { Helmet } from "react-helmet";
 //components
 import Layout from "./Layout/index";
 import PostsList from "./PostsList/index";
@@ -13,6 +14,9 @@ import "./App.scss";
 const App = () => {
   return (
     <Layout className="layout__content">
+      <Helmet>
+        <meta property="og:image" content="Helmet application" />
+      </Helmet>
       <Switch>
         <Route exact path="/" component={PostsList} />
         <Route path="/post/:id" component={SinglePost} />

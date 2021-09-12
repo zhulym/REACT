@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 //components
+import SocialIcons from './SocialIcons/index'
 //styles
 import "./PostContent.scss";
 
@@ -30,6 +31,7 @@ const PostContent = ({ post }) => {
         <span className="post__date">{postDate},</span>
         <span className="post__user-city">{post.address.city}</span>
       </div>
+      <SocialIcons post={post} />
     </div>
   );
 };

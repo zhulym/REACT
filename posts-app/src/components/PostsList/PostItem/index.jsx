@@ -15,6 +15,7 @@ const PostItem = ({ post, fetchPosts }) => {
   const [showModal, setShowModal] = useState(false);
 
   const deleteOnClick = async (id) => {
+    setShowModal(false);
     try {
       await deletePost(id);
       await fetchPosts();
