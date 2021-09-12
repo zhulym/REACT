@@ -1,6 +1,7 @@
 //libraries
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
 //components
 import { getSinglePost } from "../../api/posts";
 import SocialIcons from "../PostsList/PostContent/SocialIcons/index";
@@ -10,7 +11,8 @@ import "./SinglePost.scss";
 const SinglePost = () => {
   const { id } = useParams();
   const [postData, setPostData] = useState({});
-  const [usersList, setUsersList] = useState([]);
+  const usersState = useSelector(state => state);
+  console.log(usersState);
 
   const fetchPosts = useCallback(async () => {
     try {
@@ -20,35 +22,6 @@ const SinglePost = () => {
       console.log(e);
     }
   }, [id]);
-
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, [fetchPosts]);
-
-  // const fetchPosts = useCallback(async () => {
-  //   try {
-  //     const postData = (await getPosts()) || [];
-  //     const userData = (await getUser()) || [];
-  //     const imageData = (await getUserPhotos()) || [];
-  //     const usersPhotos = imageData.photos.photo;
-
-  //     const mixedData = userData.map((item, i) => {
-  //       return {
-  //         ...item,
-  //         title: postData[i].title,
-  //         body: postData[i].body,
-  //         imageId: usersPhotos[i].id,
-  //         owner: usersPhotos[i].owner,
-  //         secret: usersPhotos[i].secret,
-  //         server: usersPhotos[i].server,
-  //       }
-  //     })
-  //     setUsersList(mixedData);
-
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, []);
 
   useEffect(() => {
     fetchPosts();
@@ -61,7 +34,7 @@ const SinglePost = () => {
       <div className="single-post__content">
         {postData.body + postData.body + postData.body}
       </div>
-      <SocialIcons post={usersList} />
+      <SocialIcons post={usersState} />
     </div>);
 };
 

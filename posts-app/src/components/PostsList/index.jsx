@@ -1,10 +1,12 @@
 //libraries
 import React, { useEffect, useState, useCallback, useMemo } from "react";
+import { useDispatch } from 'react-redux';
 //components
 import PostItem from "./PostItem/index";
 import FilterPosts from "./FilterPosts/index";
 import PostNotFound from "./PostNotFound/index";
-import { Button } from "reactstrap";
+//actions
+import { setData } from '../../actions/users';
 //api
 import { getPosts, getUser, getUserPhotos } from "../../api/posts";
 //styles
@@ -15,6 +17,7 @@ const PostsList = () => {
   const [usersList, setUsersList] = useState([]);
   const [typeSort, setTypeSort] = useState(defaultSort);
   const [searchValue, setSearchValue] = useState('');
+  const dispatch = useDispatch();
 
   const fetchPosts = useCallback(async () => {
     try {
@@ -44,6 +47,10 @@ const PostsList = () => {
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
+
+  useEffect(() => {
+    dispatch(setData(usersList));
+  }, [usersList])
 
   const sortedPosts = useMemo(() => {
     switch (typeSort) {
