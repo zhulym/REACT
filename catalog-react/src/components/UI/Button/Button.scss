@@ -4,7 +4,7 @@
   outline: none;
   user-select: none;
   border: none;
-  background-color: blueviolet;
+  background-color: #f05713;
   color: white;
   letter-spacing: 1px;
   font-size: 20px;
@@ -12,11 +12,11 @@
   text-transform: uppercase;
   margin: 10px 0;
   &:hover {
-    background-color: rgb(124, 39, 202);
+    background-color: #cc4911;
     cursor: pointer;
   }
   &:active {
-    background-color: rgb(135, 38, 226);
+    background-color: #a13e14;
     position: relative;
     top: 1px;
   }

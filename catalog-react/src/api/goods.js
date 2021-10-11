@@ -1,10 +1,10 @@
 import { sendRequest } from './index';
 
 const headers = { authorization: 'asd' };
-const baseUrl = 'http://localhost:5000/api/v1';
+const path = '/products';
 
 export const getGoods = () => {
-    return sendRequest(`${baseUrl}/products`, 'GET', {}, headers);
+    return sendRequest(path, 'GET', {}, headers);
 };
 
 // export const getSinglePost = id => {

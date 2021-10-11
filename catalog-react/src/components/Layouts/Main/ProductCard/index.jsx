@@ -5,18 +5,17 @@ import Button from '../../../UI/Button/index';
 //styles
 import './ProductCard.scss';
 
-const ProductCard = ({ key, img, description, title, price }) => {
+const ProductCard = ({ img, description, title, price }) => {
   const formatPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price / 100);
-
 
   return (
     <div className="product-card__container">
       <div className="product-card__title">{title}</div>
       <div className="product-card__image">
-        <img className="card__image" src={img} alt={key} />
+        <img className="card__image" src={img} alt={title} />
       </div>
       <div className="product-card__description">{description}</div>
-      <Button innerText="Buy Now"/>
+      <Button innerText="Buy Now" />
       <div className="product-card__price">{formatPrice}</div>
     </div>
   );

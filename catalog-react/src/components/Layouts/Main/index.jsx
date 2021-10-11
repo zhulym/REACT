@@ -1,40 +1,27 @@
 //libraries
-import React, { useState, useCallback, useEffect } from 'react';
-import { getGoods } from '../../../api/goods';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+//actions
+
 //components
-import ProductCard from "./ProductCard/index";
+import Products from "./Products/index";
+import Login from "../Login/index";
 //styles
 import './Main.scss';
 
 const Main = () => {
-  const [goods, setGoods] = useState([]);
-
-  const fetchGoods = useCallback(async () => {
-    try {
-      const goodsData = (await getGoods()) || [];
-      setGoods(goodsData);
-    } catch (error) {
-      console.log(error)
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchGoods();
-  }, [fetchGoods]);
-
-  console.log(goods)
-
   return (
     <div className="main__content">
-      {goods.map(good => (
-        <ProductCard
-          key={good.id}
-          img={good.img}
-          title={good.title}
-          description={good.title}
-          price={good.price}
-        />
-      ))}
+      <Switch>
+
+        <Route path="/Login" component={Login} />
+
+        <Route exact path="/" component={Products} />
+        {/* <Route path="/cart" component={Cart} />
+        <Route path="/account" component={Account} />
+        <Route path="/admin" component={Admin} /> */}
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 }

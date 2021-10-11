@@ -8,12 +8,16 @@
   flex: 0 0 auto;
 }
 
-.header__cart {
-  width: 30px;
-  height: 30px;
+.header__cart-num {
+  // width: 30px;
+  // height: 30px;
   border-radius: 50%;
-  background-color: blueviolet;
+  background-color: #f05713;
   color: white;
-  padding: 3px;
+  padding: 3px 7px;
   line-height: 30px;
+}
+
+.header__cart-img {
+  vertical-align: bottom;
 }
