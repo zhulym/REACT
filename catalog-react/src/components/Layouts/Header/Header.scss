@@ -1,0 +1,19 @@
+.header {
+  min-height: 80px;
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: 0 0 5px white;
+  flex: 0 0 auto;
+}
+
+.header__cart {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: blueviolet;
+  color: white;
+  padding: 3px;
+  line-height: 30px;
+}

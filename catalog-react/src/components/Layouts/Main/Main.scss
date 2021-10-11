@@ -1,0 +1,12 @@
+.main__content {
+  flex: 1 0 auto;
+  background-color: #323741;
+  padding: 15px 15px;
+}
+
+.main__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 15px;
+}

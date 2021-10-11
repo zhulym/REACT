@@ -2,12 +2,23 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
 //components
 import InputCardNumber from './InputCardNumber/index';
 //actions
 import { delGood, incrGood, decrGood } from '../../actions/cart';
 // styles
 import './Cart.css';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+const fonts = {
+    family: 'Avenir',
+    src: 'url(https://my-domain.com/assets/avenir.woff)',
+    weight: '500',
+}
 
 const Cart = () => {
     let getAmount = 0;
@@ -40,7 +51,10 @@ const Cart = () => {
                 }
             })}
             <button type="button" onClick={countAll}>BUY NOW</button>
-            <InputCardNumber ref={inputCardNum} getAmount={getAmount} />
+
+            <Elements stripe={stripePromise}>
+                <InputCardNumber ref={inputCardNum} getAmount={getAmount} />
+            </Elements>
         </div>
     );
 };

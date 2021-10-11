@@ -1,0 +1,21 @@
+.product-card__container {
+  width: 30%;
+  border-radius: 5px;
+  background-color: #3a4252;
+}
+
+.product-card__image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card__image {
+  max-width: 100%;
+  max-height: auto;
+  position: relative;
+  vertical-align: middle;
+  height: 290px;
+  width: 290px;
+  object-fit: cover;
+  border-radius: 5px;
+}
