@@ -1,6 +1,7 @@
 //libraries
 import React from 'react';
 //components
+import Button from '../../../UI/Button/index';
 //styles
 import './ProductCard.scss';
 
@@ -15,6 +16,7 @@ const ProductCard = ({ key, img, description, title, price }) => {
         <img className="card__image" src={img} alt={key} />
       </div>
       <div className="product-card__description">{description}</div>
+      <Button innerText="Buy Now"/>
       <div className="product-card__price">{formatPrice}</div>
     </div>
   );

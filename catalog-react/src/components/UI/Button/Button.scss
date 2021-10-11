@@ -1,0 +1,23 @@
+.product__button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  user-select: none;
+  border: none;
+  background-color: blueviolet;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 10px 0;
+  &:hover {
+    background-color: rgb(124, 39, 202);
+    cursor: pointer;
+  }
+  &:active {
+    background-color: rgb(135, 38, 226);
+    position: relative;
+    top: 1px;
+  }
+}

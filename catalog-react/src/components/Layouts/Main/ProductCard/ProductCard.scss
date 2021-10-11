@@ -1,7 +1,8 @@
 .product-card__container {
-  width: 30%;
+  width: 23%;
   border-radius: 5px;
-  background-color: #3a4252;
+  background-color: #465063;
+  padding: 5px;
 }
 
 .product-card__image {
@@ -14,8 +15,21 @@
   max-height: auto;
   position: relative;
   vertical-align: middle;
-  height: 290px;
-  width: 290px;
+  height: 200px;
+  width: 200px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+.product-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  height: 60px;
+  color: rgb(190, 211, 228);
+}
+
+.product-card__description {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
