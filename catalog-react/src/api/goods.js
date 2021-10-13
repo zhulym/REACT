@@ -1,11 +1,21 @@
 import { sendRequest } from './index';
 
-const headers = { authorization: 'asd' };
-const path = '/products';
+// const headers = { authorization: 'asd' };
 
 export const getGoods = () => {
-    return sendRequest(path, 'GET', {}, headers);
+    return sendRequest('/products');
 };
+export const addGood = data => {
+    return sendRequest('/product-add', 'POST', data);
+};
+export const removeGood = data => {
+    return sendRequest('/product-remove', 'POST', data);
+};
+export const getCart = () => {
+    return sendRequest('/cart');
+};
+
+
 
 // export const getSinglePost = id => {
 //     return sendRequest(`${baseUrl}/posts/${id}`);
@@ -21,11 +31,4 @@ export const getGoods = () => {
 
 // export const updatePost = (id, data) => {
 //     return sendRequest(`${baseUrl}/posts/${id}`, 'PUT', data);
-// };
-
-// export const getUser = () => {
-//     return sendRequest(`${baseUrl}/users`);
-// };
-// export const getUserPhotos = () => {
-//     return sendRequest(`https://api.flickr.com${photoPath}&api_key=636e1481b4f3c446d26b8eb6ebfe7127&tags=cats&per_page=10&format=json&nojsoncallback=1`);
 // };

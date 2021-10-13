@@ -1,28 +1,36 @@
 //libraries
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //api
-import { getGoods } from '../../../../api/goods';
+import { getGoods, addGood } from '../../../../api/goods';
 //actions
-import { setGoodsState } from '../../../../actions/cart';
+import { addToCart } from '../../../../actions/cart';
 //components
 import ProductCard from "../ProductCard/index";
 //styles
 import '../Products/Products.scss';
 
 const Products = () => {
-
+  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
-  const goodsState = useSelector((state) => state.cart);
+
+  const addProductToCart = async (id, item) => {
+    try {
+      await addGood({ id: id });
+      dispatch(addToCart(item));
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const fetchGoods = useCallback(async () => {
     try {
-      const goodsData = (await getGoods()) || [];
-      dispatch(setGoodsState(goodsData));
+      const goodsData = await getGoods() || [];
+      setProducts(goodsData);
     } catch (error) {
       console.log(error);
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     fetchGoods();
@@ -30,13 +38,16 @@ const Products = () => {
 
   return (
     <div className="products__content">
-      {goodsState.map(good => (
+      {products.map(good => (
         <ProductCard
+          item={good}
           key={good.id}
+          id={good.id}
           img={good.img}
           title={good.title}
           description={good.title}
           price={good.price}
+          addProductToCartCallBack={addProductToCart}
         />
       ))}
     </div>

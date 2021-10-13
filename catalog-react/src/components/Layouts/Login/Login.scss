@@ -1,7 +1,21 @@
 .login__page {
   flex: 1 0 auto;
 }
-
+h1.login__heading {
+  margin-top: 0 !important;
+}
+div.login__error-wrap {
+  margin-bottom: 0 !important;
+}
+.login__error-message {
+  color: rgb(206, 43, 22);
+  font-size: 22px;
+}
 .login__button {
   margin-top: 15px;
+}
+
+.login-form__wrapper {
+  max-width: 50% !important;
+  margin: 0 auto;
 }

@@ -26,7 +26,23 @@
 
 .header__right {
   p {
-    margin: 0;
+    margin: 2px 0;
     padding: 0;
+  }
+}
+
+.logout__button,
+.profile__button {
+  background-color: #373c47;
+  border-radius: 3px;
+  user-select: none;
+  padding: 1px 5px !important;
+  &:hover {
+    cursor: pointer;
+    background-color: #525a6b;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
   }
 }

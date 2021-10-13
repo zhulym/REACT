@@ -1,13 +1,18 @@
 //libraries
 import React from 'react';
-import { Redirect, Route, } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 //constants
-import { PROTECTED_ROUTES, } from '../../constants/routes';
+import { PROTECTED_ROUTES, LOGIN_PAGE } from '../../constants/routes';
 
 const ProtectedRoutes = () => {
-  // if (!isUserLoggedIn) {
-  //   <Redirect to={LOGIN_PAGE.path} />
-  // }
+  const history = useHistory();
+  const isUserLoggedIn = useSelector(({ user }) => !!user);
+
+  if (!isUserLoggedIn) {
+    history.replace(LOGIN_PAGE.path)
+  }
+
   return (
     PROTECTED_ROUTES.map(route =>
       <Route
