@@ -2,89 +2,104 @@
 import React, { useState, useCallback } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from "yup";
+import "bootstrap/dist/css/bootstrap.css";
 //api
 import { authUser } from '../../../api/auth';
 //action
-import { setCurrentUser } from '../../../actions/user';
+import { setUserData } from '../../../actions/user';
 //styles
 import './Login.scss';
 
-const Login = () => {
 
-  const [formValues, setFormValues] = useState({});
-  // const [userData, setUserData] = useState({});
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address format")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(3, "Password must be 3 characters at minimum")
+    .required("Password is required")
+});
+
+const Login = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
-  console.log(userState)
 
-  const fetchLogin = async () => {
+  const handleSubmit = async (data) => {
     try {
-      const loginData = (await authUser(formValues)) || {};
-      dispatch(setCurrentUser(loginData));
-      // console.log(loginData)
-
+      const user = (await authUser(data)) || {};
+      dispatch(setUserData(user));
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="login__page">
-      <h2>Sign in to the site</h2>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        validate={values => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = 'Required';
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = 'Invalid email address';
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(false);
-          fetchLogin();
-        }}
-        // onChange={(values) => {
-        //   setFormValues(values);
-        //   console.log(values)
-        // }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {errors.email && touched.email && errors.email}
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            {errors.password && touched.password && errors.password}
-            <button type="submit" disabled={isSubmitting}>
-              LOGIN
-            </button>
-          </form>
-        )}
-      </Formik>
+    <div className="container">
+      <div className="row mb-5">
+        <div className="col-lg-12 text-center">
+          <h1 className="mt-5">Login Form</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-12">
+          <Formik
+            initialValues={{ email: "user@mail.com", password: "pass123" }}
+            validationSchema={LoginSchema}
+            onSubmit={({ setSubmitting }) => {
+              alert("Form is validated! Submitting the form...");
+              setSubmitting(false);
+              handleSubmit();
+            }}
+          >
+            {({ touched, errors, isSubmitting }) => (
+              <Form>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    className={`form-control ${touched.email && errors.email ? "is-invalid" : ""
+                      }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="email"
+                    className="invalid-feedback"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <Field
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    className={`form-control ${touched.password && errors.password ? "is-invalid" : ""
+                      }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="password"
+                    className="invalid-feedback"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-info btn-block login__button"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Please wait..." : "Submit"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </div>
     </div>
   );
 }
