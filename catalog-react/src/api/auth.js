@@ -2,8 +2,8 @@ import { sendRequest } from './index';
 
 const path = '/login';
 
-export const authUser = (values) => {
-  return sendRequest(path, 'POST', values);
+export const authUser = (data) => {
+  return sendRequest(path, 'POST', data);
 };
 
 

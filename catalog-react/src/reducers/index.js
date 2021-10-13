@@ -2,7 +2,7 @@ import cart from './cart';
 import user from './user';
 import { combineReducers } from 'redux';
 
-export const rootReducer = combineReducers({
+export default combineReducers({
   cart,
-  user
+  user,
 });

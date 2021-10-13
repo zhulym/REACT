@@ -1,10 +1,11 @@
-const defaultState = {};
+const initialState = {};
 
-export default function cart(state = defaultState, action) {
-  console.log(action.payload, 'red')
+export default function cart(state = initialState, action) {
   switch (action.type) {
-    case 'SET_USER':
+    case 'LOG_IN':
       return action.payload;
+    case 'LOG_OUT':
+      return initialState;
     default:
       return state;
   }

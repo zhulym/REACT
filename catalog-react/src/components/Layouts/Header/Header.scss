@@ -1,7 +1,7 @@
 .header {
   min-height: 80px;
   display: flex;
-  padding: 15px;
+  padding: 10px;
   align-items: center;
   justify-content: space-between;
   text-shadow: 0 0 5px white;
@@ -9,8 +9,6 @@
 }
 
 .header__cart-num {
-  // width: 30px;
-  // height: 30px;
   border-radius: 50%;
   background-color: #f05713;
   color: white;
@@ -20,4 +18,15 @@
 
 .header__cart-img {
   vertical-align: bottom;
+}
+
+.header__logo {
+  font-weight: 700;
+}
+
+.header__right {
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
